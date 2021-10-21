@@ -5,6 +5,7 @@ const app = express()
 const expressLayouts  = require('express-ejs-layouts')
 
 const indexRoute = require('./routes/index')
+const createNewAdvRoute = require('./routes/createTextGame/createNewAdventure')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -21,5 +22,6 @@ db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to the Database succesfuly'))
 
 app.use('/', indexRoute)
+app.use('/createTextGame', createNewAdvRoute)
 
 app.listen((process.env.PORT || 3000), () => console.log('Server running! You are the puto boss'))
