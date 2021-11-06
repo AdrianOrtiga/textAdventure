@@ -334,16 +334,33 @@ function postProject(path = '', method = 'POST') {
 
     for (level = 0; level < instructLvlsValues.length; level++) {
         const instruct = instructLvlsValues[level]
-        form.appendChild(getInstructions(instruct, level))
+        form.appendChild(getInstructions(instruct))
     }
 
     for (level = 0; level < optionValues.length; level++) {
         const options = optionValues[level]
-        form.appendChild(getOptionsValues(options, level))
+        for(optNumb = 1; optNumb < options.length;optNumb++){
+            const option = options[optNumb]
+            form.appendChild(getOption(option, level))
+        }
+    }
+
+    for (level = 0; level < linkValues.length; level++) {
+        const links = linkValues[level]
+        for(linkNumb = 1; linkNumb < links.length;linkNumb++){
+            const link = links[linkNumb]
+            form.appendChild(getLink(link, level))
+        }
     }
 
     document.body.appendChild(form)
-    form.submit()
+
+    if(confirm("Are you sure you want to create a project?")){
+        form.submit()
+    }
+    else{
+        form.remove()
+    }
 }
 
 function getLevelCounts() {
@@ -356,28 +373,27 @@ function getLevelCounts() {
     return hiddenField
 }
 
-function getInstructions(instructions, level) {
+function getInstructions(instructions) {
     const hiddenField = document.createElement('input')
     hiddenField.type = 'hidden'
-    hiddenField.name = `instructionsLvl${level}`
+    hiddenField.name = `instructions`
     hiddenField.value = instructions
     return hiddenField
 }
 
-function getOptionsValues(options, level) {
+function getOption(option, level) {
     const hiddenField = document.createElement('input')
     hiddenField.type = 'hidden'
     hiddenField.name = `options${level}`
-    let allOptions = ''
-    for(i = 1; i < options.length;i++){
-        const option = options[i]
-        if (option != undefined) {
-            allOptions = allOptions + option + `;O#${count}#O;`
-        }
-    }
-
-    hiddenField.value = allOptions
+    hiddenField.value = option
     return hiddenField
 }
 
+function getLink(link, level) {
+    const hiddenField = document.createElement('input')
+    hiddenField.type = 'hidden'
+    hiddenField.name = `links${level}`
+    hiddenField.value = link
+    return hiddenField
+}
 
