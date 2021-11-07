@@ -17,6 +17,28 @@ ul{
     text-align: center;
 }
 
+#titleSection {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center; 
+}
+
+#title,
+#adventureDesc{
+    width: 65%;
+    max-width: 650px;
+    margin-top: 5px;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+label {
+    margin-top: 10px;
+
+}
+
 .level{
     display: flex;
     justify-content: center;
@@ -49,10 +71,10 @@ textarea{
 }
 
 .btn-level{
-    margin-top: 30px;
-    padding: 20px;
+    margin-top: 15px;
+    padding: 15px;
     border-radius: 20px;
-    font-size: 30px;    
+    font-size: 20px;    
 }
 
 button{
@@ -75,6 +97,7 @@ button:hover{
     position: fixed;
     font-size: 30px;
     border-style: solid;
+    box-shadow: 1px 1px 1px black;
 }
 
 #createGameBtn{

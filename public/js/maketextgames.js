@@ -3,6 +3,8 @@
  *  VARIABLES
  * 
  *  */
+var title = ''
+var description = ''
 var optionsCount = [2] // how many options have each level
 var optionValues = [[]] // the text of the option of each levels
 var levelsCount = 0 // how many levels there are
@@ -261,6 +263,9 @@ function createAllTheLevels() {
 }
 
 function saveProject() {
+    saveTitle()
+    saveDescription()
+
     for (level = 0; level <= levelsCount; level++) {
         const levelId = "level" + level
         const levelSection = document.getElementById(levelId).children[1].children[0]
@@ -269,6 +274,21 @@ function saveProject() {
 
         saveOptionsText(level)
     }
+}
+
+function saveProjectAndAlert(){
+    saveProject()
+    alert('The project have been saved')
+}
+
+function saveTitle(){
+    const titleInput = document.getElementById('title')
+    title = titleInput.value
+}
+
+function saveDescription(){
+    const descInput = document.getElementById('adventureDesc')
+    description = descInput.value
 }
 
 function loadProject() {
@@ -326,10 +346,19 @@ function createProject() {
 }
 
 function postProject(path = '', method = 'POST') {
+    const fieldsNotOk = checkRequireFields()
+
+    if(fieldsNotOk){
+        alert('Cannot create project because there is some fields that you need to fill still')
+        return
+    }
+
     const form = document.createElement('form')
     form.action = path
     form.method = method
 
+    form.appendChild(getTitle())
+    form.appendChild(getDescription())
     form.appendChild(getLevelCounts())
 
     for (level = 0; level < instructLvlsValues.length; level++) {
@@ -361,6 +390,28 @@ function postProject(path = '', method = 'POST') {
     else{
         form.remove()
     }
+}
+
+function checkRequireFields(){
+    let fieldsNotOk = false
+    
+    return fieldsNotOk
+}
+
+function getTitle(){
+    const hiddenField = document.createElement('input')
+    hiddenField.type = 'hidden'
+    hiddenField.name = 'title'
+    hiddenField.value = title
+    return hiddenField
+}
+
+function getDescription(){
+    const hiddenField = document.createElement('input')
+    hiddenField.type = 'hidden'
+    hiddenField.name = 'description'
+    hiddenField.value = description
+    return hiddenField
 }
 
 function getLevelCounts() {

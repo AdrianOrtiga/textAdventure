@@ -1,24 +1,31 @@
 const mongoose = require('mongoose')
 
-const textAdventureSchema = new mongoose.Schema({
-    optionsCount: {
+const TextAdventureSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        description: "title of the adventur",
+        require: true
+    },
+    description: {
+        type: Array,
+        description: "What is the adventure about",
+        require: true
+    },
+    instructions: {
+        type: Array,
+        description: "description of each level",
+        require: true
+    },
+    options: {
         type: Array,
         description: "How many options have each level",
         required: true
     },
-    optionsValues: {
+    links: {
         type: Array,
         description: "which is the text of each option",
         required: true
     }
 })
 
-/********************
-
-var optionsCount = [2] // how many options have each level
-var optionValues = [[]] // the text of the option of each levels
-var levelsCount = 0 // how many levels there are
-var instructLvlsValues = [] // the description of each levels.
-var linkValues = [[]] // link value select in the option of each level
-
-**************/
+module.exports = mongoose.model('TextAdventure', TextAdventureSchema)

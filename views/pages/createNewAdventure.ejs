@@ -2,11 +2,17 @@
     <nav>
         <ul>
             <li><a href="/"> home</a></li>
-            <li><a href="#"> Play text adventure games</a></li>
+            <li><a href="/playTextAdventure"> Play text adventure games</a></li>
         </ul>
     </nav>
 </header>
 <h1>Create the best text adventure games easily now!</h1>
+<section id="titleSection" >
+    <label for="title">Adventure name title</label>
+    <input name="title" id="title" type="text">
+    <label for="description">Description of the adventure game</label>
+    <textarea name="description" id="adventureDesc" cols="30" rows="5"></textarea>
+</section>
 <section id="level0">
     <div>
         <h2>Level <span id="0">0</span></h2>
@@ -43,6 +49,6 @@
 <section>
     <button class="btn-level" onclick="addLevel()" type="button">Create a new level</button>
 </section>
-<button id="saveProjectBtn" class="important-btn" onclick="saveProject()" type="button">S</button>
+<button id="saveProjectBtn" class="important-btn" onclick="saveProjectAndAlert()" type="button">S</button>
 <button id="createGameBtn" class="important-btn" onclick="createProject()" type="button">+</button>
 <script src="/js/maketextgames.js"></script>

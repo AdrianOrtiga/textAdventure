@@ -7,6 +7,7 @@ const path = require('path')
 
 const indexRoute = require('./routes/index')
 const createNewAdvRoute = require('./routes/createNewAdventure')
+const playTextAdvRoute = require('./routes/playTextAdventure')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname,'/views'))
@@ -26,9 +27,9 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to the Database succesfuly'))
 
-
 app.use('/', indexRoute)
-app.use('/createNewAdventures', createNewAdvRoute)
+app.use('/createNewAdventure', createNewAdvRoute)
+app.use('/playTextAdventure', playTextAdvRoute)
 
 app.use('/hello', (req, res) => {
     res.send('hello bro')
