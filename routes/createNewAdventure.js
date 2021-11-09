@@ -64,5 +64,22 @@ function getLinksArray(body) {
     return linksArray
 }
 
+function getLevelsArray(body){
+    let levels = []
+    for (level = 0; level <= body.levelCounts; level++) {
+        const instructions = req.body.instructions[level]
+        const options = `options${level}`
+        const links = `links${level}`
+        levels.push({
+                level: level, 
+                instructions: instructions,
+                options: options,
+                links: links
+            })
+        optionsArray.push(body[nextOptions])
+        linksArray.push(body[nextLinks])
+    }
+}
+
 module.exports = router
 
