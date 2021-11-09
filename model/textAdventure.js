@@ -25,6 +25,11 @@ const TextAdventureSchema = new mongoose.Schema({
         type: Array,
         description: "which is the text of each option",
         required: true
+    },
+    levels: {
+        type: Array,
+        description: "all levels of the game",
+        require: false
     }
 })
 

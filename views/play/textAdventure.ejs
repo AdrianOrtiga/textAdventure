@@ -1,0 +1,22 @@
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">home</a></li>
+            <li><a href="/createNewAdventure"> create text adventure games</a></li>
+            <li><a href="/playTextAdventure"> play text adventure games</a></li>
+        </ul>
+    </nav>
+</header>
+<h2><%= textAdv.title %></h2>
+<h3> Level <%= level %></h3>
+<p><%= textAdv.instructions[level] %></p>
+<% textAdv.options[level].forEach( option => { %>
+    <div>
+        <button class="title-btn">
+            <a href="/playTextAdventure/<%= adv.id %>" class='btn-link'>
+                <%= adv.title %>
+            </a>
+        </button>
+    </div>    
+<% }) %> 
+

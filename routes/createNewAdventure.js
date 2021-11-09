@@ -24,6 +24,8 @@ router.post('/', async (req, res) => {
     const instructions = req.body.instructions
     const options = getOptionsArray(req.body)
     const links = getLinksArray(req.body)
+    const levels = getLevelsArray(req.body)
+
     const textAdventure = new TextAdventure({
         title: title,
         description: description,
@@ -31,6 +33,7 @@ router.post('/', async (req, res) => {
         options: options,
         links: links
     })
+    
     try {
         const newTextAdventure = await textAdventure.save()
         //res.redirect(`authors/${newAuthor.id}`)

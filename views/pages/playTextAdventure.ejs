@@ -5,4 +5,14 @@
             <li><a href="/createNewAdventure"> create text adventure games</a></li>
         </ul>
     </nav>
+    <h1>Text adventures you can play</h1>
+    <% textAdv.forEach( adv => { %>
+        <div>
+            <button class="title-btn">
+                <a href="/playTextAdventure/<%= adv.id %>" class='btn-link'>
+                    <%= adv.title %>
+                </a>
+            </button>
+        </div>    
+    <% }) %> 
 </header>

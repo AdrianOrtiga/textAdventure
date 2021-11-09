@@ -2,10 +2,25 @@ const express = require('express')
 const router = express.Router()
 const TextAdventure = require('../model/textAdventure')
 
-router.get('/', (req, res) => {
-    res.render('pages/playTextAdventure')
+router.get('/', async (req, res) => {
+    try{
+        const textAdv = await TextAdventure.find({})
+        res.render('pages/playTextAdventure', {textAdv: textAdv})
+    } catch{        
+        res.redirect('/')
+    }
+})
 
-    
+router.get('/:id', async (req, res) => {
+    try {
+      const textAdv = await TextAdventure.findById(req.params.id)
+      res.render('play/textAdventure', {
+        textAdv: textAdv,
+        level: 0
+      })
+    } catch {
+      res.redirect('/')
+    }
 })
 
 module.exports = router
