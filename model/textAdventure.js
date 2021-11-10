@@ -11,25 +11,10 @@ const TextAdventureSchema = new mongoose.Schema({
         description: "What is the adventure about",
         require: true
     },
-    instructions: {
-        type: Array,
-        description: "description of each level",
-        require: true
-    },
-    options: {
-        type: Array,
-        description: "How many options have each level",
-        required: true
-    },
-    links: {
-        type: Array,
-        description: "which is the text of each option",
-        required: true
-    },
     levels: {
         type: Array,
         description: "all levels of the game",
-        require: false
+        require: true
     }
 })
 

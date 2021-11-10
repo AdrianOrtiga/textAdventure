@@ -13,11 +13,9 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
+      console.log('redirect')
       const textAdv = await TextAdventure.findById(req.params.id)
-      res.render('play/textAdventure', {
-        textAdv: textAdv,
-        level: 0
-      })
+      res.redirect('/textAdventure')
     } catch {
       res.redirect('/')
     }

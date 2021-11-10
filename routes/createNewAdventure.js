@@ -21,17 +21,12 @@ router.post('/', async (req, res) => {
     console.log('creating game')
     const title = req.body.title
     const description = req.body.description
-    const instructions = req.body.instructions
-    const options = getOptionsArray(req.body)
-    const links = getLinksArray(req.body)
     const levels = getLevelsArray(req.body)
-
+    
     const textAdventure = new TextAdventure({
         title: title,
         description: description,
-        instructions: instructions,
-        options: options,
-        links: links
+        levels: levels
     })
     
     try {
@@ -46,40 +41,36 @@ router.post('/', async (req, res) => {
     }
 })
 
-function getOptionsArray(body) {
-    let optionsArray = []
-    for (level = 0; level <= body.levelCounts; level++) {
-        const nextOptions = `options${level}`
-        optionsArray.push(body[nextOptions])
-    }
-    return optionsArray
-}
-
-function getLinksArray(body) {
-    let linksArray = []
-    for (level = 0; level <= body.levelCounts; level++) {
-        const nextLinks = `links${level}`
-        linksArray.push(body[nextLinks])
-    }
-    return linksArray
-}
-
 function getLevelsArray(body){
     let levels = []
     for (level = 0; level <= body.levelCounts; level++) {
-        const instructions = req.body.instructions[level]
-        const options = `options${level}`
-        const links = `links${level}`
+        const instructions = body.instructions[level]
+        const options = getOptionsArray(body, level)
+        const links = getLinksArray(body, level)
         levels.push({
                 level: level, 
                 instructions: instructions,
                 options: options,
                 links: links
             })
-        optionsArray.push(body[nextOptions])
-        linksArray.push(body[nextLinks])
     }
+    return levels
 }
+
+function getOptionsArray(body, level) {
+    let optionsArray = []
+    const nextOptions = `options${level}`
+    optionsArray = body[nextOptions]
+    return optionsArray
+}
+
+function getLinksArray(body) {
+    let linksArray = []
+    const nextLinks = `links${level}`
+    linksArray = body[nextLinks]
+    return linksArray
+}
+
 
 module.exports = router
 

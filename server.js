@@ -8,6 +8,7 @@ const path = require('path')
 const indexRoute = require('./routes/index')
 const createNewAdvRoute = require('./routes/createNewAdventure')
 const playTextAdvRoute = require('./routes/playTextAdventure')
+const textAdvRoute = require('./routes/textAdventure')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname,'/views'))
@@ -30,6 +31,7 @@ db.once('open', () => console.log('Connected to the Database succesfuly'))
 app.use('/', indexRoute)
 app.use('/createNewAdventure', createNewAdvRoute)
 app.use('/playTextAdventure', playTextAdvRoute)
+app.use('/textAdventure', textAdvRoute)
 
 app.use('/hello', (req, res) => {
     res.send('hello bro')

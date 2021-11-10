@@ -15,6 +15,7 @@ body, section{
 ul{
     list-style-type: none;
     text-align: center;
+    padding-inline-start: inherit;
 }
 
 #titleSection {

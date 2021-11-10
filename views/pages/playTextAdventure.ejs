@@ -8,11 +8,11 @@
     <h1>Text adventures you can play</h1>
     <% textAdv.forEach( adv => { %>
         <div>
-            <button class="title-btn">
-                <a href="/playTextAdventure/<%= adv.id %>" class='btn-link'>
+            <a href="/TextAdventure/<%= `${adv.id}-i-i` %>" class='btn-link'>
+                <button class="title-btn">
                     <%= adv.title %>
-                </a>
-            </button>
+                </button>
+            </a>
         </div>    
     <% }) %> 
 </header>

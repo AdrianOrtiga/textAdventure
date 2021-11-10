@@ -7,16 +7,18 @@
         </ul>
     </nav>
 </header>
-<h2><%= textAdv.title %></h2>
+<h2><%= title %></h2>
 <h3> Level <%= level %></h3>
-<p><%= textAdv.instructions[level] %></p>
-<% textAdv.options[level].forEach( option => { %>
+<p><%= instructions %></p>
+<% let count = 0 %> 
+<% options.forEach( option => { %>
     <div>
-        <button class="title-btn">
-            <a href="/playTextAdventure/<%= adv.id %>" class='btn-link'>
-                <%= adv.title %>
-            </a>
-        </button>
+        <a href="/TextAdventure/<%= `${id}-${level}-${count}` %>" class='btn-link'>
+            <button class="title-btn">
+                <%= option %>
+            </button>
+        </a>
     </div>    
+    <% count++ %> 
 <% }) %> 
 
