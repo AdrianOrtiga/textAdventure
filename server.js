@@ -9,6 +9,8 @@ const indexRoute = require('./routes/index')
 const createNewAdvRoute = require('./routes/createNewAdventure')
 const playTextAdvRoute = require('./routes/playTextAdventure')
 const textAdvRoute = require('./routes/textAdventure')
+const loginRoute = require('./routes/login')
+const registerRoute = require('./routes/register')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname,'/views'))
@@ -32,6 +34,8 @@ app.use('/', indexRoute)
 app.use('/createNewAdventure', createNewAdvRoute)
 app.use('/playTextAdventure', playTextAdvRoute)
 app.use('/textAdventure', textAdvRoute)
+app.use('/login', loginRoute)
+app.use('/register', registerRoute)
 
 app.use('/hello', (req, res) => {
     res.send('hello bro')

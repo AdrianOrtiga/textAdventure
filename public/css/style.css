@@ -35,12 +35,19 @@ li a{
     padding-inline: 10px;
     margin: 2px;
     transition: 0.25s;
+    font-weight: bold;
 }
 
 li a:hover{
     text-decoration: underline;
     color: #3a97dd;
 }
+
+/********
+
+    END OF NAVBAR
+
+***********/
 
 
 #titleSection {
@@ -222,4 +229,17 @@ Play games style
 
 .btn-form:hover{
     background-color: #537eda;
+}
+
+
+/**********
+
+    ERROR MESSAGE
+
+***********/
+.error-msg{
+    box-sizing: border-box;
+    padding: 5px;
+    color: red;
+    font-weight: bold;
 }

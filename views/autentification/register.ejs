@@ -1,0 +1,28 @@
+<div class="log-form">
+    <div class="form">
+        <% if(message != null && message != undefined){ %>
+            <p class="error-msg"><%= message  %> </p>
+        <% } %> 
+        <h2>Register your account</h2>
+        <form class="login-form" action="" method="POST">
+            <input class="input-form" 
+                    type="text" 
+                    title="username" 
+                    placeholder="username" 
+                    name="username" 
+                    <% if(username != ''){ %>  
+                        value="<%= username %>"     
+                    <% } %>     
+                    required
+                    />
+            <input class="input-form" type="text" title="email" placeholder="email" 
+                    name="email"
+                    <% if(email != ''){ %>  
+                        value="<%= email %>"     
+                    <% } %>  
+                    />
+            <input class="input-form" type="password" title="username" placeholder="password" name="password" required>
+            <button type="submit" class="btn-form">Register</button>
+        </form>
+    </div>
+</div>
