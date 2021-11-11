@@ -15,6 +15,11 @@ const TextAdventureSchema = new mongoose.Schema({
         type: Array,
         description: "all levels of the game",
         require: true
+    },
+    user: {
+        type: String,
+        description: "user that have created the project",
+        default: "nameless"
     }
 })
 

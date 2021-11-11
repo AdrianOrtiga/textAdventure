@@ -6,16 +6,6 @@ router.get('/', (req, res) => {
     res.render('pages/createNewAdventure')
 })
 
-router.get('/test', (req, res) => {
-    res.render('pages/test')
-})
-
-router.post('/test', (req, res) => {
-    const info = req.body.test
-    res.send(info)
-    console.log(info)
-})
-
 // save project into mongodb
 router.post('/', async (req, res) => {
     console.log('creating game')
