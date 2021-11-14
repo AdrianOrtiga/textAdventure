@@ -12,9 +12,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const userExist = await Users.countDocuments({name:req.body.username}, { limit: 1 })
+    const userExist = await Users.countDocuments({username:req.body.username}, { limit: 1 })
     if(userExist){
-        console.log('exist')
         res.render('autentification/register',{
             message: 'Sorry, the username already exist.',
             username: req.body.username,
