@@ -30,6 +30,11 @@ router.post('/',saveUsername, passport.authenticate('local', {
     failureFlash: true
 }))
 
+router.delete('/', (req, res) => {
+    req.logOut()
+    res.redirect('/login')
+})
+
 function saveUsername(req, res, next){
     LoginUsername = req.body.username
     next()

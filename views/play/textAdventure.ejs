@@ -1,24 +1,13 @@
-<header>
-    <nav>
-        <ul>
-            <li><a href="/">home</a></li>
-            <li><a href="/createNewAdventure"> create text adventure games</a></li>
-            <li><a href="/playTextAdventure"> play text adventure games</a></li>
-        </ul>
-    </nav>
-</header>
 <h2><%= title %></h2>
 <h3> Level <%= level %></h3>
-<p><%= instructions %></p>
+<p class="play-instruc"><%= instructions %></p>
 <% let count = 0 %> 
 <% options.forEach( option => { %>
-    <div>
         <a href="/TextAdventure/<%= `${id}-${level}-${count}` %>" class='btn-link'>
-            <button class="title-btn">
+            <button class="play-opt-btn">
                 <%= option %>
             </button>
         </a>
-    </div>    
     <% count++ %> 
 <% }) %> 
 

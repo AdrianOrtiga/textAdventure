@@ -21,6 +21,10 @@ body, section{
     HEADER NAVBAR
 
 ******************/
+nav{
+    font-size: 1.25rem
+}
+
 ul{
     list-style-type: none;
     padding-inline-start: inherit;
@@ -28,7 +32,7 @@ ul{
     justify-content: center;
 }
 
-li a{
+li a, .btn-logout{
     display: flex;
     flex-wrap: wrap;
     text-decoration: none;
@@ -36,11 +40,24 @@ li a{
     margin: 2px;
     transition: 0.25s;
     font-weight: bold;
+    color: rgb(73, 80, 175)
 }
 
-li a:hover{
+li a:hover, .btn-logout:hover{
     text-decoration: underline;
     color: #3a97dd;
+}
+
+.btn-logout{
+    box-sizing: border-box;
+    border: none;
+    transition: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: inherit;
+}
+
+.btn-logout:hover{
+    background-color: rgba(0, 0, 0, 0);
 }
 
 /********
@@ -163,7 +180,7 @@ Play games style
     font-size: 20px;
     margin: 15px;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: center;
 }
 
@@ -172,6 +189,16 @@ Play games style
     text-decoration: none;
 }
 
+.play-opt-btn{
+    border-radius: 15px;
+    font-size: 1rem;
+    padding: 5px 15px;
+    margin: 5px;
+}
+
+.play-instruc{
+    font-size: 1.15rem;
+}
 /**********************
 
     LOGING and REGISTER FORM
@@ -239,7 +266,6 @@ Play games style
 .btn-form:hover{
     background-color: #537eda;
 }
-
 
 /**********
 

@@ -9,18 +9,18 @@ router.get('/', (req, res) => {
 // save project into mongodb
 router.post('/', async (req, res) => {
     console.log('creating game')
-    const title = req.body.title
-    const description = req.body.description
     const levels = getLevelsArray(req.body)
-    
+
     const textAdventure = new TextAdventure({
-        title: title,
-        description: description,
-        levels: levels
+        title: req.body.title,
+        description: req.body.description,
+        levels: levels,
+        user: req.user.username
     })
     
     try {
         const newTextAdventure = await textAdventure.save()
+        res.redirect(`textAdventure/${newTextAdventure.id}-i-i`)
         //res.redirect(`authors/${newAuthor.id}`)
     } catch {
         console.log('uff algo a ido muy mal')
