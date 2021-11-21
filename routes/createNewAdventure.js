@@ -70,6 +70,4 @@ function checkNotAuthenticated(req, res, next) {
     res.redirect('/playTextAdventure')
 }
 
-
 module.exports = router
-

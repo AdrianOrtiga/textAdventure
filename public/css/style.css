@@ -201,7 +201,7 @@ Play games style
 }
 /**********************
 
-    LOGING and REGISTER FORM
+    LOGIN FORM, REGISTER FORM & MY PROJECT STYLES
 
 ****************/
 .log-form{
@@ -239,7 +239,7 @@ Play games style
     background: #dbdbdb;
 }
 
-.form .btn-form {
+.form .btn-form, .del-project-btn {
     font-family: 'Comfortaa', cursive;
     text-transform: uppercase;
     outline: 0;
@@ -263,8 +263,19 @@ Play games style
     transition: 0.2s;
 }
 
-.btn-form:hover{
+.btn-form:hover, .del-project-btn{
     background-color: #537eda;
+}
+
+.card-project{
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    border-radius: 10px;
+    max-width: 300px;
+    margin: 0 auto 50px;
+    padding: 45px;
+    text-align: center;
 }
 
 /**********

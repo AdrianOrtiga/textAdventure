@@ -13,6 +13,7 @@ const playTextAdvRoute = require('./routes/playTextAdventure')
 const textAdvRoute = require('./routes/textAdventure')
 const loginRoute = require('./routes/login')
 const registerRoute = require('./routes/register')
+const myProjectsRoute = require('./routes/myprojects')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
@@ -52,7 +53,7 @@ app.use('/playTextAdventure', playTextAdvRoute)
 app.use('/textAdventure', textAdvRoute)
 app.use('/login', loginRoute)
 app.use('/register', registerRoute)
-
+app.use('/myprojects', myProjectsRoute)
 
 function checkAuthenticated(req, res, next) {
     
