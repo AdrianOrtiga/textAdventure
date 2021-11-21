@@ -239,7 +239,7 @@ Play games style
     background: #dbdbdb;
 }
 
-.form .btn-form, .del-project-btn {
+.form .btn-form{
     font-family: 'Comfortaa', cursive;
     text-transform: uppercase;
     outline: 0;
@@ -263,7 +263,7 @@ Play games style
     transition: 0.2s;
 }
 
-.btn-form:hover, .del-project-btn{
+.btn-form:hover, .del-project-btn {
     background-color: #537eda;
 }
 

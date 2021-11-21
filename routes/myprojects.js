@@ -13,7 +13,7 @@ router.get('/', checkNotAuthenticated, async (req, res) => {
 
 router.get('/delete:id', async (req, res) => {
     try {
-        await TextAdventure.remove({_id:req.params.id})
+        await TextAdventure.deleteOne({_id:req.params.id})
         res.redirect('/myprojects')
       } catch (e) {
         console.log(e)
