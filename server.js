@@ -63,7 +63,6 @@ function checkAuthenticated(req, res, next) {
     
     app.set('layout', 'layouts/layout')
     next()
-}
-
+}  
 
 app.listen((process.env.PORT || 3000), () => console.log('Server running! You are the puto boss'))

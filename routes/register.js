@@ -3,7 +3,7 @@ const router = express.Router()
 const Users = require('../model/users')
 const bcrypt = require('bcrypt')
 
-router.get('/', (req, res) => {
+router.get('/', checkNotAuthenticated, (req, res) => {
     res.render('autentification/register', {
         message: null,
         username: '',
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', async (req, res) => {
+router.post('/', checkNotAuthenticated, async (req, res) => {
     const userExist = await Users.countDocuments({username:req.body.username}, { limit: 1 })
     if(userExist){
         res.render('autentification/register',{
@@ -35,5 +35,13 @@ router.post('/', async (req, res) => {
         console.log('error')
     }
 })
+
+
+function checkNotAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return res.redirect('/login/successful')
+    }
+    next()
+}
 
 module.exports = router

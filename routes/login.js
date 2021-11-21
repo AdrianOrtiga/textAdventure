@@ -16,7 +16,7 @@ initializePassport(
     }
 )
 
-router.get('/', (req, res) => {
+router.get('/', checkNotAuthenticated, (req, res) => {
     res.render('autentification/login', {username: LoginUsername})
 })
 
@@ -24,7 +24,7 @@ router.get('/successful', (req, res) => {
     res.render('autentification/loginsuccesful', { username: req.user.username})
 })
 
-router.post('/',saveUsername, passport.authenticate('local', {
+router.post('/', checkNotAuthenticated, saveUsername, passport.authenticate('local', {
     successRedirect: '/login/successful',
     failureRedirect: '/login',
     failureFlash: true
@@ -37,6 +37,13 @@ router.delete('/', (req, res) => {
 
 function saveUsername(req, res, next){
     LoginUsername = req.body.username
+    next()
+}
+
+function checkNotAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return res.redirect('/login/successful')
+    }
     next()
 }
 

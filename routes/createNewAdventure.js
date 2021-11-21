@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router()
 const TextAdventure = require('../model/textAdventure')
 
-router.get('/', (req, res) => {
+router.get('/', checkNotAuthenticated, (req, res) => {
     res.render('pages/createNewAdventure')
 })
 
 // save project into mongodb
-router.post('/', async (req, res) => {
+router.post('/', checkNotAuthenticated, async (req, res) => {
     console.log('creating game')
     const levels = getLevelsArray(req.body)
 
@@ -59,6 +59,15 @@ function getLinksArray(body) {
     const nextLinks = `links${level}`
     linksArray = body[nextLinks]
     return linksArray
+}
+
+function checkNotAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        next()
+        return
+    }
+
+    res.redirect('/playTextAdventure')
 }
 
 
