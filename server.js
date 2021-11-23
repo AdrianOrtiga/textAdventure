@@ -27,8 +27,10 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(flash())
+
+const secret = process.env.SESSION_SECRET == undefined ? 'nopongassiemptrelo' : process.env.SESSION_SECRET
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: secret,
     resave: false,
     saveUninitialized: false
 }))
