@@ -66,6 +66,11 @@ li a:hover, .btn-logout:hover{
 
 ***********/
 
+/**********
+
+    CREATE GAMES STYLES
+
+*************/
 
 #titleSection {
     display: flex;
@@ -201,7 +206,7 @@ Play games style
 }
 /**********************
 
-    LOGIN FORM, REGISTER FORM & MY PROJECT STYLES
+    LOGIN FORM, REGISTER FORM & MY PROJECT STYLES CARDS (PLAY ADVENTURE PAGE, MY PROJECTS PAGE)
 
 ****************/
 .log-form{
@@ -220,6 +225,7 @@ Play games style
     margin: 0 auto 100px;
     padding: 45px;
     text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .form .input-form {
@@ -239,7 +245,7 @@ Play games style
     background: #dbdbdb;
 }
 
-.form .btn-form{
+.form .btn-form, .card-btn{
     font-family: 'Comfortaa', cursive;
     text-transform: uppercase;
     outline: 0;
@@ -255,7 +261,7 @@ Play games style
     cursor: pointer;
 }
 
-.form .btn-form:active {
+.form .btn-form:active, .card-btn {
     background: #395591;
 }
 
@@ -263,19 +269,27 @@ Play games style
     transition: 0.2s;
 }
 
-.btn-form:hover, .del-project-btn {
+.btn-form:hover, .card-btn:hover {
     background-color: #537eda;
 }
 
-.card-project{
+.card-project, .card{
     position: relative;
     z-index: 1;
     background: #FFFFFF;
     border-radius: 10px;
-    max-width: 300px;
-    margin: 0 auto 50px;
-    padding: 45px;
+    margin: 0 20px 50px;
+    padding: 0 45px;
+    padding-top: 10px;
+    padding-bottom: 25px;
     text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+    align-items: flex-start;
 }
 
 /**********

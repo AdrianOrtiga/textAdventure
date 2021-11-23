@@ -1,12 +1,18 @@
 <h1>Text adventures you can play</h1>
-<div class="project-container">
-<% textAdv.forEach( adv=> { %>
-    <div>
-        <a href="/TextAdventure/<%= `${adv.id}-i-i` %>" class='btn-link'>
-            <button class="title-btn">
+<div class="card-container">
+    <% textAdv.forEach( adv=> { %>
+        <div class="card">
+            <h2>
                 <%= adv.title %>
-            </button>
-        </a>
-    </div>
-<% }) %>
+            </h2>
+            <p>
+                <%= adv.description %>
+            </p>
+            <a href="/TextAdventure/<%= `${adv.id}-i-i` %>" class='btn-link'>
+                <button class="card-btn">
+                    Play Adventure
+                </button>
+            </a>
+        </div>
+        <% }) %>
 </div>

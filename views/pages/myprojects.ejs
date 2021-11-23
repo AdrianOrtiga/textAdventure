@@ -1,5 +1,5 @@
 <h1>Your projects</h1>
-<div class="project-container">
+<div class="card-container">
     <% textAdv.forEach( adv=> { %>
         <div class="card-project">
             <h2>
@@ -9,7 +9,7 @@
                 <%= adv.description %>
             </p>
             <a href="/myprojects/delete<%= `${adv.id}` %>" class='btn-link'>
-                <button class="del-project-btn">
+                <button class="card-btn">
                     Delete Project
                 </button>
             </a>
