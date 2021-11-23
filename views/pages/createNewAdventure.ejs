@@ -1,5 +1,5 @@
 <h1>Create the best text adventure games easily now!</h1>
-<section id="titleSection" >
+<section id="titleSection">
     <label for="title">Adventure name title</label>
     <input name="title" id="title" type="text">
     <label for="description">Description of the adventure game</label>
@@ -41,6 +41,10 @@
 <section>
     <button class="btn-level" onclick="addLevel()" type="button">Create a new level</button>
 </section>
-<button id="saveProjectBtn" class="important-btn" onclick="saveProjectAndAlert()" type="button">S</button>
-<button id="createGameBtn" class="important-btn" onclick="createProject()" type="button">+</button>
+<abbr title="Save project">
+    <button id="saveProjectBtn" class="important-btn" onclick="saveProjectAndAlert()" type="button">S</button>
+</abbr>
+<abbr title="Create new project">
+    <button id="createGameBtn" class="important-btn" onclick="createProject()" type="button">+</button>
+</abbr>
 <script src="/js/maketextgames.js"></script>

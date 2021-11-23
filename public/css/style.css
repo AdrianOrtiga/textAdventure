@@ -292,6 +292,10 @@ Play games style
     align-items: flex-start;
 }
 
+.upd-btn {
+    margin-bottom: 5px;
+}
+
 /**********
 
     ERROR MESSAGE

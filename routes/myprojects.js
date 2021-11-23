@@ -11,6 +11,16 @@ router.get('/', checkNotAuthenticated, async (req, res) => {
     }
 })
 
+router.get('/update:id', async (req, res) => {
+    try {
+        const path = `/createNewAdventure/load${req.params.id}`
+        res.redirect(path)
+      } catch (e) {
+        console.log(e)
+        res.redirect('/myprojects')
+      }
+})
+
 router.get('/delete:id', async (req, res) => {
     try {
         await TextAdventure.deleteOne({_id:req.params.id})

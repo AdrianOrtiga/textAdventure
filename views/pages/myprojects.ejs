@@ -8,6 +8,11 @@
             <p>
                 <%= adv.description %>
             </p>
+            <a href="/myprojects/update<%= `${adv.id}` %>" class='btn-link'>
+                <button class="card-btn upd-btn">
+                    Update Project
+                </button>
+            </a>
             <a href="/myprojects/delete<%= `${adv.id}` %>" class='btn-link'>
                 <button class="card-btn">
                     Delete Project
