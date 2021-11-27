@@ -296,6 +296,16 @@ Play games style
     margin-bottom: 5px;
 }
 
+.play-btn {
+    background-color: #409139;
+    margin-bottom: 5px;
+    transition: 0.3s ease;
+}
+
+.play-btn:hover {
+    background-color: #6ada53;
+}
+
 /**********
 
     ERROR MESSAGE

@@ -5,7 +5,7 @@ const TextAdventure = require('../model/textAdventure')
 var project_id = null
 
 router.get('/', checkNotAuthenticated, (req, res) => {
-    res.render('pages/createNewAdventure')
+    res.render('pages/createNewAdventure', {updateAdv: false})
 })
 
 // load project
@@ -13,7 +13,7 @@ router.get('/load:id', async (req, res) => {
     try {
         project_id = req.params.id
         const textAdv = await TextAdventure.findOne({_id:project_id})
-        res.render('pages/createNewAdventure', {textAdv: textAdv})
+        res.render('pages/createNewAdventure', {updateAdv: true, textAdv: textAdv})
       } catch (e) {
         console.log(e)
         res.redirect('/myprojects')

@@ -1,9 +1,14 @@
 <h1>Create the best text adventure games easily now!</h1>
 <section id="titleSection">
-    <label for="title">Adventure name title</label>
-    <input name="title" id="title" type="text">
+    <label for="title">Adventure title</label>
+    <input name="title" id="title" type="text" placeholder="title"
+    <% if(updateAdv){ %> 
+        value="<%= textAdv.title %>" 
+    <% } %> 
+    >
     <label for="description">Description of the adventure game</label>
-    <textarea name="description" id="adventureDesc" cols="30" rows="5"></textarea>
+    <textarea name="description" id="adventureDesc" cols="30" rows="5" 
+        placeholder="description"><% if(updateAdv){ %><%= textAdv.description %><% } %></textarea>
 </section>
 <section id="level0">
     <div>
