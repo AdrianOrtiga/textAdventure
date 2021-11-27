@@ -39,7 +39,7 @@ function createDeleteOptionBtnIfneeded(level) {
 
         if (true) {
             const delOptionBtn = document.createElement('button')
-            const onclickFuntion = 'deleteOption(document.getElementById(' + "'" + level + "'" + ').innerText)'
+            const onclickFuntion = `deleteOption(${level})`
 
             delOptionBtn.classList.add("option")
             delOptionBtn.classList.add("option-btn")
@@ -108,7 +108,7 @@ function addOptionDivElement(level, optionNumber = optionsCount[level]) {
 
     newDiv.append(inputOption)
     newDiv.append(linkOption)
-
+    
     aditionalOptions.append(newDiv)
 
     if (false)
@@ -159,7 +159,7 @@ function deleteOption(level = 0) {
     if (optionsCount[level] < 3) {
         const levelDeleteOptBtnId = "deleteOptionsButtonLevel" + level
         const deleteSection = document.getElementById(levelDeleteOptBtnId)
-        deleteSection.innerHTML = ""
+        deleteSection.children[0].remove()
     }
 }
 
@@ -179,42 +179,126 @@ function createNewLevel() {
     createHtmlLevel(levelsCount)
 }
 
-function createHtmlLevel(levelsCount) {
+function createHtmlLevel(level) {
     const additionalLevelSection = document.getElementById("additionalLevels")
 
-    additionalLevelSection.innerHTML += '<section id="level' + levelsCount + '">' +
+    if(true){
+        const newSection = document.createElement('section')
+        const idNewSection = 'level' + level
+        newSection.setAttribute('id', idNewSection)
+
+        const titleH2 = document.createElement('h2')
+        titleH2.innerText = `Level ${level}`
+        newSection.append(titleH2)
+
+        const levelDiv = document.createElement('div')
+        levelDiv.classList.add('level')
+
+        const textareaLevel = document.createElement('textarea')
+        textareaLevel.setAttribute('id', `description${level}`)
+        textareaLevel.setAttribute('rows', `5`)
+        textareaLevel.innerText = 'Write here the instructions'
+        levelDiv.append(textareaLevel)
+
+        const optionsDiv = document.createElement('div')
+        const levelOpt1Div = document.createElement('div')
+        const levelOpt2Div = document.createElement('div')
+        const lvlAddOptDiv = document.createElement('div')
+        const DelBtnOptDiv = document.createElement('div')
+        
+        levelOpt1Div.setAttribute('id',`level${level}option1`)
+        levelOpt2Div.setAttribute('id',`level${level}option2`)
+        lvlAddOptDiv.setAttribute('id',`aditionalOptionsLevel${level}`)
+        DelBtnOptDiv.setAttribute('id',`deleteOptionsButtonLevel${level}`)
+
+        const inputOpt1 = document.createElement('input')
+        inputOpt1.setAttribute('type', 'text')
+        inputOpt1.setAttribute('value', 'option 1')
+        inputOpt1.classList.add('option')
+        const selLinkOpt1 = document.createElement('select')
+        selLinkOpt1.setAttribute('id',`level${level}link1`)
+        selLinkOpt1.classList.add('link-option')
+        const optSel1 = document.createElement('option')
+        optSel1.innerText = 'Select level to link'
+        selLinkOpt1.append(optSel1)
+
+        levelOpt1Div.append(inputOpt1)
+        levelOpt1Div.append(selLinkOpt1)
+
+        const inputOpt2 = document.createElement('input')
+        inputOpt2.setAttribute('type', 'text')
+        inputOpt2.setAttribute('value', 'option 2')
+        inputOpt2.classList.add('option')
+        const selLinkOpt2 = document.createElement('select')
+        selLinkOpt2.setAttribute('id',`level${level}link2`)
+        selLinkOpt2.classList.add('link-option')
+        const optSel2 = document.createElement('option')
+        optSel2.innerText = 'Select level to link'
+        selLinkOpt2.append(optSel2)
+
+        levelOpt2Div.append(inputOpt2)
+        levelOpt2Div.append(selLinkOpt2)
+        
+        const AddOptBtn = document.createElement('button')
+        AddOptBtn.classList.add('option')
+        AddOptBtn.classList.add('option-btn')
+        AddOptBtn.setAttribute('onclick',`addOption(${level})`)
+        AddOptBtn.innerText = '+ Add additional option'
+
+        optionsDiv.append(levelOpt1Div)
+        optionsDiv.append(levelOpt2Div)
+        optionsDiv.append(lvlAddOptDiv)
+        optionsDiv.append(DelBtnOptDiv)
+        optionsDiv.append(AddOptBtn)
+        levelDiv.append(optionsDiv)
+
+        const delLvlBtnDiv = document.createElement('div')
+        const delLevelBtn = document.createElement('button')
+        delLevelBtn.classList.add('btn-level')
+        delLevelBtn.setAttribute('onclick',`deleteLevel(${level})`)
+        delLevelBtn.innerText = `- Delete Level ${level}`
+        delLvlBtnDiv.append(delLevelBtn)
+        
+        newSection.append(levelDiv)
+        newSection.append(delLvlBtnDiv)
+
+        additionalLevelSection.append(newSection)
+    }
+    else {
+        additionalLevelSection.innerHTML += '<section id="level' + level + '">' +
         '<div>' +
-        '<h2>Level <span id="' + levelsCount + '">' + levelsCount + '</span></h2>' +
+        '<h2>Level <span id="' + level + '">' + level + '</span></h2>' +
         '</div>' +
         '<div class="level">' +
-        '<textarea name="" id="description' + levelsCount + '" rows="5">Write here the instructions</textarea>' +
+        '<textarea name="" id="description' + level + '" rows="5">Write here the instructions</textarea>' +
         '<div>' +
-        '<div id="level' + levelsCount + 'option1">' +
+        '<div id="level' + level + 'option1">' +
         '<input class="option" type="text" value="option 1">' +
-        '<select class="link-option" id="level' + levelsCount + 'link1">' +
+        '<select class="link-option" id="level' + level + 'link1">' +
         '<option value="">Select a level to link</option>' +
         '</select>' +
         '</div>' +
-        '<div id="level' + levelsCount + 'option2">' +
+        '<div id="level' + level + 'option2">' +
         '<input class="option" type="text" value="option 2">' +
-        '<select class="link-option" id="level' + levelsCount + 'link2">' +
+        '<select class="link-option" id="level' + level + 'link2">' +
         '<option value="">Select a level to link</option>' +
         '</select>' +
         '</div>' +
-        '<div id="aditionalOptionsLevel' + levelsCount + '">' +
+        '<div id="aditionalOptionsLevel' + level + '">' +
         '</div>' +
-        '<div id="deleteOptionsButtonLevel' + levelsCount + '">' +
+        '<div id="deleteOptionsButtonLevel' + level + '">' +
         '</div>' +
-        '<button class="option option-btn" onclick="addOption(document.getElementById(' + levelsCount + ').innerText)">' +
+        '<button class="option option-btn" onclick="addOption(document.getElementById(' + level + ').innerText)">' +
         '+ Add additional option</button>' +
         '</div>' +
         '</div>' +
         '<div>' +
-        '<button class="btn-level" onclick="deleteLevel(document.getElementById(' + levelsCount + ').innerText)">' +
-        '- Delete Level ' + levelsCount +
+        '<button class="btn-level" onclick="deleteLevel(document.getElementById(' + level + ').innerText)">' +
+        '- Delete Level ' + level +
         ' </button>' +
         '</div>' +
         '</section>'
+    }
 }
 
 function deleteLevel(level) {
@@ -233,11 +317,17 @@ function deleteLevel(level) {
 
     // remove all the levels to build the project again
     const additionalLevelSection = document.getElementById("additionalLevels")
-    additionalLevelSection.innerHTML = ''
+    removeAlladitionalSection(additionalLevelSection)  
 
     createAllTheLevels()
     updateDropdowns()
     loadProject()
+}
+
+function removeAlladitionalSection(aditionalLevels){
+    while (aditionalLevels.firstChild) {
+        aditionalLevels.removeChild(aditionalLevels.firstChild);
+    }
 }
 
 function removeAditionalOptionLevel(level) {
