@@ -306,6 +306,11 @@ Play games style
     background-color: #6ada53;
 }
 
+.instructions-box{
+    width: 80%;
+    padding-left: 10%;
+}
+
 /**********
 
     ERROR MESSAGE

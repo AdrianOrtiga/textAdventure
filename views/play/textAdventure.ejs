@@ -1,13 +1,19 @@
-<h2><%= title %></h2>
-<h3> Level <%= level %></h3>
-<p class="play-instruc"><%= instructions %></p>
-<% let count = 0 %> 
-<% options.forEach( option => { %>
+<h2>
+    <%= title %>
+</h2>
+<h3> Level <%= level %>
+</h3>
+<div class="instructions-box">
+    <p class="play-instruc">
+        <%= instructions %>
+    </p>
+</div>
+<% let count=0 %>
+    <% options.forEach( option=> { %>
         <a href="/TextAdventure/<%= `${id}-${level}-${count}` %>" class='btn-link'>
             <button class="play-opt-btn">
                 <%= option %>
             </button>
         </a>
-    <% count++ %> 
-<% }) %> 
-
+        <% count++ %>
+            <% }) %>
