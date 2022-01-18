@@ -57,7 +57,7 @@
                         <% const link = level.links[i] %>
                         <% const optionNumber = i + 1 %> 
                         <% const linkNumber = optionNumber %> 
-                        <div id="level<%= level.level %>option">
+                        <div id="level<%= level.level %>option<%= optionNumber %>">
                             <input type="text" value="<%= option %>" class="option">
                             <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option">%> 
                                 <option>Select level to link</option>
@@ -127,7 +127,7 @@
                                 <% const link = level.links[i] %>
                                 <% const optionNumber = i + 1 %> 
                                 <% const linkNumber = optionNumber %> 
-                                <div id="level<%= level.level %>option">
+                                <div id="level<%= level.level %>option<%= optionNumber %>">
                                     <input type="text" value="<%= option %>" class="option">
                                     <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option">%> 
                                         <option>Select level to link</option>
@@ -149,7 +149,7 @@
                                     <% const link = level.links[i] %>
                                     <% const optionNumber = i + 1 %> 
                                     <% const linkNumber = optionNumber %> 
-                                    <div id="level<%= level.level %>option">
+                                    <div id="level<%= level.level %>option<%= optionNumber %>">
                                         <input type="text" value="<%= option %>" class="option">
                                         <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option">%> 
                                             <option>Select level to link</option>
@@ -186,7 +186,13 @@
 <abbr title="Save project">
     <button id="saveProjectBtn" class="important-btn" onclick="saveProjectAndAlert()" type="button">S</button>
 </abbr>
+<% if(updateAdv){ %>
+    <abbr title="Upadate new project">
+        <button id="UpadateGameBtn" class="important-btn" onclick="UpdateProject()" type="button">U</button>
+    </abbr>
+<% } else { %>
 <abbr title="Create new project">
     <button id="createGameBtn" class="important-btn" onclick="createProject()" type="button">+</button>
 </abbr>
+<% } %> 
 <script src="/js/maketextgames.js"></script>

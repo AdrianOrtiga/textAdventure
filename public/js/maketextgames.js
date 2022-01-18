@@ -1,15 +1,57 @@
 /********************
  * 
+ *  CONSTANTS
+ * 
+ *  */
+const _MIN_OPTIONS_LEVEL = 2
+
+/********************
+ * 
  *  VARIABLES
  * 
  *  */
 var title = ''
 var description = ''
-var optionsCount = [2] // how many options have each level
+var optionsCount = [_MIN_OPTIONS_LEVEL] // how many options have each level
 var optionValues = [[]] // the text of the option of each levels
-var levelsCount = 0 // how many levels there are
+var levelsCount = -1 // how many levels there are
 var instructLvlsValues = [] // the description of each levels.
 var linkValues = [[]] // link value select in the option of each level
+
+
+loadProjectFromDocument()
+// check if is the user is updating the project
+function loadProjectFromDocument(){
+    let stillLevels = true
+    for(let level= 0;stillLevels;level++){
+        if(document.getElementById(`level${level}`) != null){
+            levelsCount++
+            optionValues[levelsCount] = []
+            linkValues[levelsCount] = []
+            optionsCount[level] = countOptionsLevel(level)
+            saveOptionsText(level)
+            continue
+        }
+        stillLevels = false
+    }
+}
+
+function countOptionsLevel(level){
+    let optionsCount = 0
+    let stillOptions = true
+    for(let optionNumber= 1;stillOptions;optionNumber++){
+        const optionId = `level${level}option${optionNumber}`          
+        const option = document.getElementById(optionId)
+        if(option != null){
+            optionValues[level][optionNumber] = option.firstChild.value // de option is a div
+            optionsCount++
+            continue
+        }
+        stillOptions = false
+    }
+
+    return optionsCount
+}
 
 /******************* 
         functions
@@ -32,7 +74,7 @@ function createDeleteOptionBtnIfneeded(level) {
     const levelDeleteBtnId = "deleteOptionsButtonLevel" + level
     const deleteSectionButton = document.getElementById(levelDeleteBtnId)
 
-    const haveToAddDeleteBtn = optionsCount[level] <= 3
+    const haveToAddDeleteBtn = optionsCount[level] <= _MIN_OPTIONS_LEVEL+1 // Adding the constant _MIN_OPTIONS_LEVEL,there was a 3 here 
 
     if (haveToAddDeleteBtn) {
         // add delete option button
@@ -156,7 +198,7 @@ function deleteOption(level = 0) {
     optionToDelete.remove()
     optionsCount[level]--
 
-    if (optionsCount[level] < 3) {
+    if (optionsCount[level] <= _MIN_OPTIONS_LEVEL) {
         const levelDeleteOptBtnId = "deleteOptionsButtonLevel" + level
         const deleteSection = document.getElementById(levelDeleteOptBtnId)
         deleteSection.children[0].remove()
@@ -172,7 +214,7 @@ function addLevel() {
 
 function createNewLevel() {
     levelsCount++
-    optionsCount[levelsCount] = 2
+    optionsCount[levelsCount] = _MIN_OPTIONS_LEVEL
     optionValues[levelsCount] = []
     linkValues[levelsCount] = []
 
@@ -342,10 +384,10 @@ function createAllTheLevels() {
     for (level = 1; level <= levelsCount; level++) {
         createHtmlLevel(level)
 
-        const haveToAddOptions = optionsCount[level] >= 3
+        const haveToAddOptions = optionsCount[level] >= _MIN_OPTIONS_LEVEL+1 
 
         if (haveToAddOptions) {
-            for (option = 3; option < optionValues[level].length; option++) {
+            for (option = _MIN_OPTIONS_LEVEL+1; option < optionValues[level].length; option++) {
                 addOptionDivElement(level, option)
             }
         }
@@ -538,3 +580,12 @@ function getLink(link, level) {
     return hiddenField
 }
 
+
+function showTheData(){
+
+    console.log("optionsCount: ",optionsCount)
+    console.log("optionValues: ", optionValues)
+    console.log("levelsCount: ", levelsCount)
+    console.log("instructLvlsValues: ",instructLvlsValues)
+    console.log("linkValues: ",linkValues)
+}
