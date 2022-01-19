@@ -477,8 +477,13 @@ function createProject() {
     postProject()
 }
 
+function updateProject(){
+    saveProject()
+    postProject('load', 'GET')
+}
+
 function postProject(path = '', method = 'POST') {
-    const fieldsNotOk = checkRequireFields()
+    const fieldsNotOk = checkRequireFieldsNotOk()
 
     if(fieldsNotOk){
         alert('Cannot create project because there is some fields that you need to fill still')
@@ -524,10 +529,11 @@ function postProject(path = '', method = 'POST') {
     }
 }
 
-function checkRequireFields(){
-    let fieldsNotOk = false
+function checkRequireFieldsNotOk(){
+    if(title == '') return true
+    if(description == '') return true
     
-    return fieldsNotOk
+    return false
 }
 
 function getTitle(){

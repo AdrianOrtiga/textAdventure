@@ -8,7 +8,6 @@ router.get('/', checkNotAuthenticated, (req, res) => {
     res.render('pages/createNewAdventure', {updateAdv: false})
 })
 
-// load project
 router.get('/load:id', async (req, res) => {
     try {
         project_id = req.params.id
@@ -22,8 +21,6 @@ router.get('/load:id', async (req, res) => {
 
 // save project into mongodb
 router.post('/', checkNotAuthenticated, async (req, res) => {
-    if(project_id !== null) deleteOldProject()  
-    
     const levels = getLevelsArray(req.body)
     const textAdventure = new TextAdventure({
         title: req.body.title,
@@ -31,9 +28,9 @@ router.post('/', checkNotAuthenticated, async (req, res) => {
         levels: levels,
         user: req.user.username
     })
-    
     try {
         const newTextAdventure = await textAdventure.save()
+        console.log(newTextAdventure.id)
         res.redirect(`textAdventure/${newTextAdventure.id}-i-i`)
         //res.redirect(`authors/${newAuthor.id}`)
     } catch {
@@ -42,6 +39,21 @@ router.post('/', checkNotAuthenticated, async (req, res) => {
         //     author: author,
         //     errorMessage: 'Error creating Author'
         // })
+    }
+})
+
+router.post('/load:id', checkNotAuthenticated, async (req, res) => {
+    try {
+        project_id = req.params.id
+        await TextAdventure.updateOne({_id:project_id},{title:req.body.title})
+        await TextAdventure.updateOne({_id:project_id},{title:req.body.description})
+
+        const levels = getLevelsArray(req.body)    
+        await TextAdventure.updateOne({_id:project_id},{levels:levels})    
+    
+        res.redirect(`/textAdventure/${project_id}-i-i`)
+    } catch {
+        console.log('error: ', e)
     }
 })
 
@@ -86,7 +98,8 @@ function checkNotAuthenticated(req, res, next) {
 
 async function deleteOldProject(){
     try {
-        await TextAdventure.deleteOne({_id:project_id})
+        const textAdv = await TextAdventure.findOne({_id:project_id})
+        textAdv.remove()
     } catch (e) {
         console.log('error: ', e)
     }

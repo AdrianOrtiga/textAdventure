@@ -164,7 +164,7 @@ button:hover{
     box-shadow: 1px 1px 1px black;
 }
 
-#createGameBtn{
+#createGameBtn, #UpadateGameBtn{
     right: 15%;
     bottom: 70px;
 }
