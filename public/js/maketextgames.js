@@ -30,6 +30,7 @@ function loadProjectFromDocument(){
             linkValues[levelsCount] = []
             optionsCount[level] = countOptionsLevel(level)
             saveOptionsText(level)
+            if(optionsCount[level] > _MIN_OPTIONS_LEVEL) createDeleteOptionBtnIfneeded(level, true)
             continue
         }
         stillLevels = false
@@ -42,6 +43,7 @@ function countOptionsLevel(level){
     for(let optionNumber= 1;stillOptions;optionNumber++){
         const optionId = `level${level}option${optionNumber}`          
         const option = document.getElementById(optionId)
+        if(optionId == 3) createDeleteOptionBtnIfneeded(level)
         if(option != null){
             optionValues[level][optionNumber] = option.firstChild.value // de option is a div
             optionsCount++
@@ -70,12 +72,13 @@ function createNewOption(level = 0) {
     createDeleteOptionBtnIfneeded(level)
 }
 
-function createDeleteOptionBtnIfneeded(level) {
+function createDeleteOptionBtnIfneeded(level, update = false) {
     const levelDeleteBtnId = "deleteOptionsButtonLevel" + level
     const deleteSectionButton = document.getElementById(levelDeleteBtnId)
 
-    const haveToAddDeleteBtn = optionsCount[level] <= _MIN_OPTIONS_LEVEL+1 // Adding the constant _MIN_OPTIONS_LEVEL,there was a 3 here 
+    let haveToAddDeleteBtn = optionsCount[level] <= _MIN_OPTIONS_LEVEL+1 // Adding the constant _MIN_OPTIONS_LEVEL,there was a 3 here 
 
+    if(update) haveToAddDeleteBtn = true
     if (haveToAddDeleteBtn) {
         // add delete option button
 

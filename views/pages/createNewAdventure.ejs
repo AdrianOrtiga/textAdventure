@@ -21,7 +21,7 @@
                 <div id="level0option1">
                     <% const option1 = level.options[0] %> 
                     <input class="option" type="text" value="<%= option1 %>">
-                    <select name="linkOption" id="level0link1" class="link-option">
+                    <select id="level0link1" class="link-option">
                         <% const link0 = level.links[0] %> 
                         <option value="">Select a level to link</option>
                         <% for(let j = 0; j < textAdv.levels.length; j++) { %>
@@ -37,7 +37,7 @@
                 <div id="level0option2">
                     <% const option2 = level.options[1] %> 
                     <input class="option" type="text" value="<%= option2 %>">
-                    <select name="linkOption" id="level0link2" class="link-option">
+                    <select id="level0link2" class="link-option">
                         <% const link1 = level.links[1] %> 
                         <option value="">Select a level to link</option>
                         <% for(let j = 0; j < textAdv.levels.length; j++) { %>
@@ -195,4 +195,4 @@
     <button id="createGameBtn" class="important-btn" onclick="createProject()" type="button">+</button>
 </abbr>
 <% } %> 
-<script src="/js/maketextgames.js"></script>
+<script src="/js/maketextgames.js" defer></script>
