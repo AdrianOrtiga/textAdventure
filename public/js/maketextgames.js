@@ -147,7 +147,7 @@ function addOptionDivElement(level, optionNumber = optionsCount[level]) {
     linkOption.classList.add('link-option')
 
     const voidOptionLink = document.createElement('option')
-    voidOptionLink.textContent = 'Select a level to link'
+    voidOptionLink.textContent = 'Select level to link'
 
     linkOption.append(voidOptionLink)
 
@@ -384,7 +384,7 @@ function removeAditionalOptionLevel(level) {
 }
 
 function createAllTheLevels() {
-    for (level = 1; level <= levelsCount; level++) {
+    for (level = 0; level <= levelsCount; level++) {
         createHtmlLevel(level)
 
         const haveToAddOptions = optionsCount[level] >= _MIN_OPTIONS_LEVEL+1 
@@ -403,10 +403,10 @@ function saveProject() {
 
     for (level = 0; level <= levelsCount; level++) {
         const levelId = "level" + level
-        const levelSection = document.getElementById(levelId).children[1].children[0]
+        const levelSection = document.getElementById(levelId)
+        if(levelSection == null) continue
 
-        instructLvlsValues[level] = levelSection.value
-
+        instructLvlsValues[level] = levelSection.children[1].children[0].value
         saveOptionsText(level)
     }
 }
@@ -429,9 +429,10 @@ function saveDescription(){
 function loadProject() {
     for (level = 0; level < instructLvlsValues.length; level++) {
         const levelId = "level" + level
-        const levelSection = document.getElementById(levelId).children[1].children[0]
+        const levelSection = document.getElementById(levelId)
+        if(levelSection == null) continue
 
-        levelSection.value = instructLvlsValues[level]
+        levelSection.children[1].children[0].value = instructLvlsValues[level]
         reloadOptionsText(level)
     }
 }
@@ -486,10 +487,10 @@ function updateProject(){
 }
 
 function postProject(path = '', method = 'POST') {
-    const fieldsNotOk = checkRequireFieldsNotOk()
+    const errorMessage = checkError()
 
-    if(fieldsNotOk){
-        alert('Cannot create project because there is some fields that you need to fill still')
+    if(errorMessage){
+        alert(errorMessage)
         return
     }
 
@@ -532,11 +533,12 @@ function postProject(path = '', method = 'POST') {
     }
 }
 
-function checkRequireFieldsNotOk(){
-    if(title == '') return true
-    if(description == '') return true
+function checkError(){
+    if(title == '') return 'You have to enter a title in order to save the project'
+    if(description == '') return 'You have to enter a description in order to save the project'
+    if(levelsCount < 0) return 'Your text adventure at least must have 1 level'
     
-    return false
+    return ''
 }
 
 function getTitle(){

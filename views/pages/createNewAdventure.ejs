@@ -9,7 +9,6 @@
             <textarea name="description" id="adventureDesc" cols="30" rows="5"
                 placeholder="description"><% if(updateAdv){ %><%= textAdv.description %><% } %></textarea>
 </section>
-<section id="level0">
     <% if(updateAdv){ %>
         <% const level = textAdv.levels[0] %> 
         <div>
@@ -80,37 +79,7 @@
                     + Add additional option</button>
             </div>
         </div>
-    <% } else { %>
-        <div>
-            <h2>Level <span id="0">0</span></h2>
-        </div>
-        <div class="level">
-            <textarea name="instLevel0" id="description0" rows="5">Write here the instructions</textarea>
-            <div>
-                <div id="level0option1">
-                    <input class="option" type="text" value="option 1">
-                    <select name="linkOption" id="level0link1" class="link-option">
-                        <option value="">Select a level to link</option>
-                    </select>
-                </div>
-                <div id="level0option2">
-                    <input class="option" type="text" value="option 2">
-                    <select name="linkOption" id="level0link2" class="link-option">
-                        <option value="">Select a level to link</option>
-                    </select>
-                </div>
-                <div id="aditionalOptionsLevel0">
-                    <!-- here the addicional options are created by the javascript-->
-                </div>
-                <div id="deleteOptionsButtonLevel0">
-                    <!-- here it goes the delete button for the additional options-->
-                </div>
-                <button class="option option-btn" type="button" onclick="addOption(0)">
-                    + Add additional option</button>
-            </div>
-        </div>
-    <% } %> 
-</section>
+    <% } %>
 <div id="additionalLevels">
     <!-- here the additional levels-->
     <% if(updateAdv){ %>
