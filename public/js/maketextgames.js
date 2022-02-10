@@ -20,6 +20,7 @@ var linkValues = [[]] // link value select in the option of each level
 
 
 loadProjectFromDocument()
+
 // check if is the user is updating the project
 function loadProjectFromDocument(){
     let stillLevels = true

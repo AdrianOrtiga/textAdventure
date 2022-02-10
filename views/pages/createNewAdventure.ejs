@@ -9,89 +9,39 @@
             <textarea name="description" id="adventureDesc" cols="30" rows="5"
                 placeholder="description"><% if(updateAdv){ %><%= textAdv.description %><% } %></textarea>
 </section>
-    <% if(updateAdv){ %>
-        <% const level = textAdv.levels[0] %> 
-        <div>
-            <h2>Level <span id="0">0</span></h2>
-        </div>
-        <div class="level">
-            <textarea name="instLevel0" id="description0" rows="5"><%= level.instructions %></textarea>
-            <div>
-                <div id="level0option1">
-                    <% const option1 = level.options[0] %> 
-                    <input class="option" type="text" value="<%= option1 %>">
-                    <select id="level0link1" class="link-option">
-                        <% const link0 = level.links[0] %> 
-                        <option value="">Select a level to link</option>
-                        <% for(let j = 0; j < textAdv.levels.length; j++) { %>
-                            <% const levelLink = `Level ${j}` %> 
-                            <option value="<%= levelLink %>"
-                                <% if(link0 === levelLink) {%> 
-                                selected
-                                <% } %> 
-                                ><%= levelLink %></option>
-                        <% } %>
-                    </select>
-                </div>
-                <div id="level0option2">
-                    <% const option2 = level.options[1] %> 
-                    <input class="option" type="text" value="<%= option2 %>">
-                    <select id="level0link2" class="link-option">
-                        <% const link1 = level.links[1] %> 
-                        <option value="">Select a level to link</option>
-                        <% for(let j = 0; j < textAdv.levels.length; j++) { %>
-                            <% const levelLink = `Level ${j}` %> 
-                            <option value="<%= levelLink %>"
-                                <% if(link0 === levelLink) {%> 
-                                selected
-                                <% } %> 
-                                ><%= levelLink %></option>
-                        <% } %>
-                    </select>
-                </div>
-                <div id="aditionalOptionsLevel0">
-                    <!-- here the addicional options are created by the javascript-->
-                    <% for(let i = 2; i < level.options.length; i++) { %>
-                        <% const option = level.options[i] %>
-                        <% const link = level.links[i] %>
-                        <% const optionNumber = i + 1 %> 
-                        <% const linkNumber = optionNumber %> 
-                        <div id="level<%= level.level %>option<%= optionNumber %>">
-                            <input type="text" value="<%= option %>" class="option">
-                            <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option">%> 
-                                <option>Select level to link</option>
-                                <% for(let j = 0; j < textAdv.levels.length; j++) { %>
-                                    <% const levelLink = `Level ${j}` %> 
-                                    <option value="<%= levelLink %>"
-                                    <% if(link === levelLink) {%> 
-                                    selected
-                                    <% } %> 
-                                    ><%= levelLink %></option>
-                                <% } %>
-                            </select> 
-                        </div>
-                    <% } %>
-                </div>
-                <div id="deleteOptionsButtonLevel0">
-                    <!-- here it goes the delete button for the additional options-->
-                </div>
-                <button class="option option-btn" type="button" onclick="addOption(0)">
-                    + Add additional option</button>
-            </div>
-        </div>
-    <% } %>
 <div id="additionalLevels">
     <!-- here the additional levels-->
     <% if(updateAdv){ %>
         <% textAdv.levels.forEach( level=> { %>
-            <% if(level.level != 0){ %>
-                <section id="level<%= level.level %>">
-                    <h2>Level <%= level.level %>
-                    </h2>
-                    <div class="level">
-                        <textarea id="description<%= level.level %>" rows="5"><%= level.instructions %></textarea>
-                        <div>
-                            <% for(let i = 0; i < 2; i++) { %>
+            <section id="level<%= level.level %>">
+                <h2>Level <%= level.level %>
+                </h2>
+                <div class="level">
+                    <textarea id="description<%= level.level %>" rows="5"><%= level.instructions %></textarea>
+                    <div>
+                        <% for(let i = 0; i < 2; i++) { %>
+                            <% const option = level.options[i] %>
+                            <% const link = level.links[i] %>
+                            <% const optionNumber = i + 1 %> 
+                            <% const linkNumber = optionNumber %> 
+                            <div id="level<%= level.level %>option<%= optionNumber %>">
+                                <input type="text" value="<%= option %>" class="option">
+                                <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option">%> 
+                                    <option>Select level to link</option>
+                                    <% for(let j = 0; j < textAdv.levels.length; j++) { %>
+                                        <% const levelLink = `Level ${j}` %> 
+                                        <option value="<%= levelLink %>"
+                                        <% if(link === levelLink) {%> 
+                                        selected
+                                        <% } %> 
+                                        ><%= levelLink %></option>
+                                    <% } %>
+                                </select> 
+                            </div>
+                        <% } %> 
+                        <div id="aditionalOptionsLevel<%= level.level %>">
+                            <!-- here the addicional options are created by the javascript-->
+                            <% for(let i = 2; i < level.options.length; i++) { %>
                                 <% const option = level.options[i] %>
                                 <% const link = level.links[i] %>
                                 <% const optionNumber = i + 1 %> 
@@ -110,42 +60,19 @@
                                         <% } %>
                                     </select> 
                                 </div>
-                            <% } %> 
-                            <div id="aditionalOptionsLevel<%= level.level %>">
-                                <!-- here the addicional options are created by the javascript-->
-                                <% for(let i = 2; i < level.options.length; i++) { %>
-                                    <% const option = level.options[i] %>
-                                    <% const link = level.links[i] %>
-                                    <% const optionNumber = i + 1 %> 
-                                    <% const linkNumber = optionNumber %> 
-                                    <div id="level<%= level.level %>option<%= optionNumber %>">
-                                        <input type="text" value="<%= option %>" class="option">
-                                        <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option">%> 
-                                            <option>Select level to link</option>
-                                            <% for(let j = 0; j < textAdv.levels.length; j++) { %>
-                                                <% const levelLink = `Level ${j}` %> 
-                                                <option value="<%= levelLink %>"
-                                                <% if(link === levelLink) {%> 
-                                                selected
-                                                <% } %> 
-                                                ><%= levelLink %></option>
-                                            <% } %>
-                                        </select> 
-                                    </div>
-                                <% } %>
-                            </div>
-                            <div id="deleteOptionsButtonLevel<%= level.level %>">
-                            </div>
-                            <button class="option option-btn"
-                                    <%  %> 
-                                    onclick="addOption(<%= level.level %>)">+ Add additional option</button>
+                            <% } %>
                         </div>
+                        <div id="deleteOptionsButtonLevel<%= level.level %>">
+                        </div>
+                        <button class="option option-btn"
+                                <%  %> 
+                                onclick="addOption(<%= level.level %>)">+ Add additional option</button>
                     </div>
-                    <div>
-                        <button class="btn-level"  <%  %> onclick="deleteLevel(<%= level.level %>)">- Delete Level <%= level.level %></button>
-                    </div>
-                </section>
-            <% } %>
+                </div>
+                <div>
+                    <button class="btn-level"  <%  %> onclick="deleteLevel(<%= level.level %>)">- Delete Level <%= level.level %></button>
+                </div>
+            </section>
         <% }) %>
     <% } %>
 </div>
