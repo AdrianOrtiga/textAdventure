@@ -1,0 +1,16 @@
+<div class="log-form">
+    <div class="form">
+        <h2>Are you sure?</h2>
+        <p>You are going to delete the project <b>"<%= textAdv.title %>"</b> you won't be able to recover it.</p>
+        <a href="/myprojects/delete<%= `${textAdv.id}` %>" class='btn-link'>
+            <button class="delete-btn card-btn">
+                Yes, Delete Project
+            </button>
+        </a>
+        <a href="/myprojects" class='btn-link'>
+            <button class="card-btn">
+                No, I missclicked
+            </button>
+        </a>
+    </div>
+</div>

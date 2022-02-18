@@ -11,7 +11,7 @@ router.get('/', checkNotAuthenticated, async (req, res) => {
     }
 })
 
-router.get('/update:id', async (req, res) => {
+router.get('/update:id', checkNotAuthenticated, async (req, res) => {
     try {
         const path = `/createNewAdventure/load${req.params.id}`
         res.redirect(path)
@@ -21,7 +21,7 @@ router.get('/update:id', async (req, res) => {
       }
 })
 
-router.get('/delete:id', async (req, res) => {
+router.get('/delete:id', checkNotAuthenticated, async (req, res) => {
     try {
         await TextAdventure.deleteOne({_id:req.params.id})
         res.redirect('/myprojects')
