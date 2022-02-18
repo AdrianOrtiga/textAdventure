@@ -4,7 +4,7 @@
     typografy
 */
 
-:root, ul, body, button, input, textarea{
+:root, ul, body, button, input, textarea, select, option{
     font-family: 'Comfortaa', cursive;
 }
 
@@ -125,6 +125,7 @@ textarea{
     padding: 5px;
     border: none;
     border-radius: 5px;
+    /* min-width: ; */
 }
 
 .option-btn{

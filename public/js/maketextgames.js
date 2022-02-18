@@ -133,6 +133,7 @@ function addOptionDivElement(level, optionNumber = optionsCount[level]) {
     const idNewDiv = 'level' + level + 'option' + optionNumber
 
     newDiv.setAttribute('id', idNewDiv)
+    newDiv.classList.add('level-option')
 
     const inputOption = document.createElement('input')
     const inputValue = 'option ' + optionNumber

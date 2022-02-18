@@ -26,7 +26,7 @@
                             <% const linkNumber = optionNumber %> 
                             <div id="level<%= level.level %>option<%= optionNumber %>">
                                 <input type="text" value="<%= option %>" class="option">
-                                <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option">%> 
+                                <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option" style="margin-left: 0;">%> 
                                     <option>Select level to link</option>
                                     <% for(let j = 0; j < textAdv.levels.length; j++) { %>
                                         <% const levelLink = `Level ${j}` %> 
@@ -48,7 +48,7 @@
                                 <% const linkNumber = optionNumber %> 
                                 <div id="level<%= level.level %>option<%= optionNumber %>">
                                     <input type="text" value="<%= option %>" class="option">
-                                    <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option">%> 
+                                    <select id="level<%= level.level %>link<%= linkNumber %>" class="link-option" style="margin-left: 0;">%> 
                                         <option>Select level to link</option>
                                         <% for(let j = 0; j < textAdv.levels.length; j++) { %>
                                             <% const levelLink = `Level ${j}` %> 
