@@ -4,7 +4,7 @@ const Users = require('../model/users')
 const bcrypt = require('bcrypt')
 
 router.get('/', checkNotAuthenticated, (req, res) => {
-    res.render('autentification/register', {
+    res.render('authentification/register', {
         message: null,
         username: '',
         email: '',
@@ -14,7 +14,7 @@ router.get('/', checkNotAuthenticated, (req, res) => {
 router.post('/', checkNotAuthenticated, async (req, res) => {
     const userExist = await Users.countDocuments({username:req.body.username}, { limit: 1 })
     if(userExist){
-        res.render('autentification/register',{
+        res.render('authentification/register',{
             message: 'Sorry, the username already exist.',
             username: req.body.username,
             email: req.body.email

@@ -17,11 +17,13 @@ initializePassport(
 )
 
 router.get('/', checkNotAuthenticated, (req, res) => {
-    res.render('autentification/login', {username: LoginUsername})
+    console.log(req.body)
+
+    res.render('authentification/login', {username: LoginUsername})
 })
 
 router.get('/successful', (req, res) => {
-    res.render('autentification/loginsuccesful', { username: req.user.username})
+    res.render('authentification/loginsuccesful', { username: req.user.username})
 })
 
 router.post('/', checkNotAuthenticated, saveUsername, passport.authenticate('local', {
