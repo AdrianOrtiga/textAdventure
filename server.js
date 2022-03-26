@@ -29,7 +29,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(flash())
 
-const secret = process.env.SESSION_SECRET == undefined ? 'nopongassiemptrelo' : process.env.SESSION_SECRET
+const secret = process.env.SESSION_SECRET
 app.use(session({
     secret: secret,
     resave: false,
